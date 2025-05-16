@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Fira Code", monospace;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.page-title {
+    align-self: flex-start;
+    width: 40%;
+    padding: 0;
+    margin: 5vh;
+    margin-bottom: 0;
+    font-size: 3vh;
+    color: #f2c993;
+}
+
+.chart {
+    width: 100%;
+    height: 80vh;
+    margin-top: 5vh;
+}
+
+.sunburst-tooltip {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.sunburst-tooltip-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.sunburst-tooltip-value {
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.percentage-list {
+    margin-top: 6px;
+}
+
+.legend {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    margin-bottom: 5vh;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.color-box {
+    width: 60px;
+    height: 40px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+}
+
+.legend-label {
+    font-size: 24px;
+}
+
+.legend-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+    margin-top: 7vh;
+}
+
+@page {
+    size: A4 Portrait;
+    margin: 1cm;
+}
+
+@media print {
+    html,
+    body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .page-title {
+        position: relative;
+        align-self: flex-start;
+        margin: 1cm 0;
+        margin-top: 0;
+    }
+
+    .chart {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .legend {
+        width: 100%;
+        margin-top: 1cm;
+    }
+
+    .legend-item {
+        margin-bottom: 0.5cm;
+    }
+
+    .color-box {
+        width: 1cm;
+        height: 0.7cm;
+    }
+
+    .legend-label {
+        font-size: 10pt;
+    }
+
+    .legend-title {
+        font-size: 12pt;
+        margin-top: 0.5cm;
+    }
+}
