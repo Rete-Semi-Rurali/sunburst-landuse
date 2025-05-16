@@ -1,69 +1,103 @@
-## Come utilizzare la versione generalizzata
+# 🌱 Sunburst Chart - Landuse
 
-Ecco come utilizzare questo script generalizzato per creare diverse istanze del grafico Sunburst:
+**Visualizzazione interattiva di dati gerarchici sull'agricoltura biologica**
 
-```js
-// Esempio 1: Configurazione di base (simile alla versione originale)
-const sunburst1 = createSunburstVisualization({
-  containerId: "chart1",
-  legendId: "legend1",
-  dataSource: "pcg_intercomunale_v2.csv"
-});
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![GitHub last commit](https://img.shields.io/github/last-commit/Rete-Semi-Rurali/sunburst-landuse)
+![GitHub repo size](https://img.shields.io/github/repo-size/Rete-Semi-Rurali/sunburst-landuse)
 
-// Inizializza il grafico
-sunburst1.initialize();
+## 🚀 Introduzione
 
-// Esempio 2: Configurazione con gerarchia e parametri diversi
-const sunburst2 = createSunburstVisualization({
-  containerId: "chart2",
-  legendId: "legend2",
-  dataSource: "altro_dataset.csv",
-  hierarchyLevels: ["provincia", "categoria", "tipo", "prodotto"],
-  colorMappings: {
-    root: "#3366cc",
+Questo progetto offre una visualizzazione dati avanzata tramite sunburst chart per analizzare dataset gerarchici relativi all'agricoltura biologica. Permette di esplorare relazioni parte-tutto tra comuni, tipi di coltivazione, specie e varietà.
+
+## ✨ Funzionalità
+
+- **Visualizzazione gerarchica** multi-livello
+- **Zoom interattivo** click-to-drill
+- **Tooltip informativi** con dettagli metrici
+- **Legenda dinamica** con tabella ordinabile
+- **Statistiche automatiche** (aree, percentuali, beneficiari)
+- **Design responsive** per desktop e mobile
+- **Ottimizzato per stampa** (report PDF)
+
+## 📦 Installazione
+
+1. Clona il repository:
+```bash
+git clone https://github.com/Rete-Semi-Rurali/sunburst-landuse.git
+cd sunburst-landuse
+```
+
+2. Apri il file `index.html` nel tuo browser preferito.
+
+## 🛠 Configurazione
+
+Modifica `chart.js` per personalizzare:
+
+```javascript
+const sunburst = createSunburstVisualization({
+  containerId: "chart",
+  dataSource: "./data/yourdata.csv",  // Percorso del tuo CSV
+  hierarchyLevels: ["livello1", "livello2", "livello3"], // Gerarchia
+  valueAttribute: "colonna_valori",   // Colonna con i valori
+  colorMappings: {                    // Schema colori
+    root: "#f2c993",
     levelColors: {
-      "provincia": "#6699cc",
-      "categoria": "#99cc33",
-      "tipo": "#cc9933",
-      "prodotto": "#cc6633"
-    },
-    attributeMappings: {
-      "categoria": "colore_categoria",
-      "tipo": "colore_tipo"
-    }
-  },
-  valueAttribute: "superficie",
-  aziendaAttribute: "numero_aziende",
-  tooltipConfig: {
-    friendlyNames: {
-      "provincia": "Provincia",
-      "categoria": "Categoria",
-      "tipo": "Tipologia",
-      "prodotto": "Prodotto",
-      "root": "Regione"
+      livello1: "#ff7f0e",
+      livello2: "#2ca02c"
     }
   }
 });
-
-sunburst2.initialize();
-
-// Esempio 3: Aggiornamento della configurazione di un'istanza esistente
-setTimeout(() => {
-  sunburst1.updateConfig({
-    hierarchyLevels: ["comune", "specie", "varieta"],
-    colorMappings: {
-      root: "#990000"
-    }
-  });
-}, 5000); // Aggiorna dopo 5 secondi
 ```
 
-## Vantaggi della versione generalizzata
+## 📂 Struttura file CSV
 
-1. **Configurabile**: La soluzione permette di personalizzare completamente i parametri del grafico.
-2. **Multiple istanze**: Puoi creare più visualizzazioni sulla stessa pagina con configurazioni diverse.
-3. **Aggiornabile**: Ogni istanza può essere aggiornata dinamicamente con nuove configurazioni.
-4. **Organizzato**: Il codice è ben strutturato con separazione delle responsabilità.
-5. **Robusto**: Vengono forniti valori predefiniti per ogni parametro, garantendo la retrocompatibilità.
+Il file CSV deve contenere:
 
-Questa soluzione offre la flessibilità necessaria per adattarsi a diversi dataset e gerarchie mantenendo la stessa logica di visualizzazione.
+- Colonne corrispondenti ai livelli gerarchici
+- Una colonna con valori numerici
+- (Opzionale) Colonne per colori e beneficiari
+
+Esempio:
+```csv
+comune,tipo_coltivazione,specie,area,beneficiari
+Roma,Frumento,Grano Duro,15000,25
+Milano,Orzo,Orzo Distico,12000,18
+```
+
+## 🌐 Demo online
+
+[Visualizza demo live](https://rete-semi-rurali.github.io/sunburst-landuse/)
+
+## 📄 Documentazione tecnica
+
+### Architettura
+- **Librerie**:
+  - [sunburst-chart](https://github.com/vasturiano/sunburst-chart) per la visualizzazione
+  - [D3.js](https://d3js.org/) per data manipulation
+- **Algoritmi**:
+  - Ricorsione per costruzione gerarchia
+  - Calcolo bottom-up delle statistiche
+
+### Funzioni principali
+1. `buildHierarchy()` - Costruisce la struttura ad albero
+2. `calculateStats()` - Calcola metriche e percentuali
+3. `updateLegend()` - Genera la legenda interattiva
+
+## 🤝 Come contribuire
+
+1. Fai un fork del progetto
+2. Crea un branch (`git checkout -b feature/AmazingFeature`)
+3. Commit (`git commit -m 'Add some AmazingFeature'`)
+4. Push (`git push origin feature/AmazingFeature`)
+5. Apri una Pull Request
+
+## 📜 Licenza
+
+Distribuito con licenza MIT. Vedi `LICENSE` per maggiori informazioni.
+
+## 📧 Contatti
+
+Enrico Corsi - enr.studio@gmail.com
+
+Link progetto: [https://github.com/Rete-Semi-Rurali/sunburst-landuse](https://github.com/Rete-Semi-Rurali/sunburst-landuse)
